@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm")
+    id("org.jetbrains.dokka")
     jacoco
     id("org.sonarqube")
     signing // required for maven central
@@ -56,6 +57,20 @@ tasks {
     withType<GenerateModuleMetadata>().configureEach {
         enabled = false
     }
+
+    register<Jar>("sourcesJar") {
+        archiveClassifier.set("sources")
+        from(sourceSets.main.get().allSource)
+    }
+
+    dokkaJavadoc {
+        outputDirectory.set(layout.buildDirectory.dir("documentation/javadoc"))
+    }
+
+    register<Jar>("javadocJar") {
+        archiveClassifier.set("javadoc")
+        from(named<org.jetbrains.dokka.gradle.DokkaTask>("dokkaJavadoc").get().outputDirectory)
+    }
 }
 
 sonarqube {
@@ -89,6 +104,8 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
+            artifact(tasks["sourcesJar"])
+            artifact(tasks["javadocJar"])
 
             pom {
                 name.set("Kotlin Logging")

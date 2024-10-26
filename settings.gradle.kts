@@ -10,9 +10,11 @@ pluginManagement {
     plugins {
         val kotlinVersion: String by System.getProperties()
         val sonarqubeVersion: String by System.getProperties()
+        val dokkaVersion: String by System.getProperties()
 
         kotlin("jvm") version kotlinVersion
         id("org.sonarqube") version sonarqubeVersion
+        id("org.jetbrains.dokka") version dokkaVersion
     }
 }
 

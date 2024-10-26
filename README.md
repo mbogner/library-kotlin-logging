@@ -13,6 +13,8 @@ Local:
 ./gradlew clean signMavenPublication publishToMavenLocal
 ```
 
+see `~/.m2/repository/dev/mbo/kotlin-logging` for the created content
+
 Upload:
 ```shell
 ./gradlew clean signMavenPublication publishToMavenLocal publish
