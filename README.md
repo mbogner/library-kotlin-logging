@@ -20,6 +20,11 @@ Release:
 ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
 ```
 
+All in One:
+```shell
+./gradlew clean signMavenPublication publishToMavenLocal publishToSonatype closeAndReleaseSonatypeStagingRepository
+```
+
 By running this you don't need to use the web interface to close and release the library.
 
 ### Web Process
