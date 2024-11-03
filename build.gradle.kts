@@ -148,3 +148,9 @@ publishing {
 signing {
     sign(publishing.publications["maven"])
 }
+
+release {
+    git {
+        requireBranch.set("develop")
+    }
+}
