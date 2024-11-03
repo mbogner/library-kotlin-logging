@@ -3,9 +3,10 @@ plugins {
     id("org.jetbrains.dokka")
     jacoco
     id("org.sonarqube")
-    signing // required for maven central
+    signing
     id("maven-publish")
     id("io.github.gradle-nexus.publish-plugin")
+    id("net.researchgate.release")
 }
 
 val javaVersion: String by System.getProperties()
